@@ -1,0 +1,32 @@
+@charset "utf-8";
+* {margin: 0;padding: 0;font-family: "microsoft yahei";color: #000;font-size: 14px;}
+img{display: block;}
+ul {list-style: none;}/*去除ul的黑色点*/
+a{text-decoration:none;cursor:pointer;outline:none}
+body{ color: #f5f5f5}
+.container{margin:0 auto;width: 1220px;}
+.block{padding: 0px;}
+
+
+
+/* 主菜单 */
+
+.head{position: relative;width:100%;background: #00F5FF;border-bottom:1px solid #ddd;height:20px;z-index: 9999}
+.head .navbox{width: 1200px;margin: 0 auto;}
+.head .nav{display: block; float: left;width:calc(100% - 200px)}
+.head .nav .nav_pc{ width: 100%;}
+.head .nav ul li{float:left;position: relative;border-right: 1px solid #cccccc;box-sizing: border-box;z-index: 999;}
+.head .nav ul li:first-child{border-left: 1px solid #cccccc;}
+.head .nav ul li .f_a{line-height:20px;display:block;text-align:center;font-size:16px;color:#fff;}
+.head .nav ul li:hover .f_a{background-color:#cf1322;color: #fff; transition:all .3s}
+.head .nav ul li .s_navbox{display:none;position: absolute;left: 0;width: 100%; background:#fff;background-color: #00a2ff;z-index: 9999;box-sizing: border-box}
+/*下一行是测试*/
+.head .nav ul li .s_navbox1{display:none;position: absolute;left: 500;width: 100%; background:#fff;background-color: #00a2ff;z-index: 9999;box-sizing: border-box}
+.head .nav ul li .s_navbox .s_a a{color:#fff;font-size:14px;text-transform:uppercase;display:block;text-align: center;padding: 10px 0;border-top: 1px solid #fff;}
+.head .nav ul li .s_navbox .s_a a:hover{background-color:#cf1322;color: #fff;}
+.m_nav{display:none}
+.headlf .m_logo{display: none}
+.headrg .m_menuimg{display: none}
+.active{background-color: #cf1322}
+.activ2{background-color: #cf1322}
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试django标签中的 if 和for</title>
+</head>
+<body>
+{% if x > 10 %}
+今天天气非常好
+{% else %}
+天气不错
+{% endif %}
+
+<br>
+{% for name in lst %}
+    {% if forloop.first %}&&&&&&{% endif %}
+    <p> {{forloop.counter }} {{name}}</p>
+    {% if forloop.last %}===={% endif %}
+{% empty %}
+没有值
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ePSM工单系统综合看板</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <style type="text/css">
+    .div {
+    border-top: rgb(255, 255, 255, 1) solid 11px !important;
+    border: rgb(255, 255, 255, 1) solid 0;
+    }
+
+    /* 页面背景颜色*/
+    .body {
+    background-color: rgba(13,30,103,1.000);
+    }
+
+    /*页面标题样式*/
+   .ziti {
+        text-align: center;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 400;
+        background-color: rgba(255, 161, 61, 1);
+        font-size: 38px;
+        letter-spacing: 5px;
+        }
+
+        /*时间样式*/
+        .ziti1 {
+        text-align: right;
+        color: rgba(0, 0, 0, 6);
+        font-weight: 400;
+        background-color: rgba(255, 161, 61, 1);
+        font-size: 17px;
+        letter-spacing: 3px;
+        }
+
+        	/* 清除浏览器的内外边距 */
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	/* <!-- 情况一：没有父盒子，即父盒子就是浏览器 --> */
+	/*上右*/
+	.a {
+		width: 33%;
+		height: 49%;
+		position: absolute;
+		top: 9%;
+		right: 0.2%;
+		}
+
+	/*上中*/
+	.b {
+		width: 33%;
+		height: 49%;
+		position: absolute;
+		top: 9%;
+		right: 33.5%;
+		}
+
+	/*上左*/
+	.c {
+		width: 33%;
+		height: 49%;
+		position: absolute;
+		top: 9%;
+		right: 66.8%;
+		}
+
+	/*下右*/
+	.d {
+		width: 33%;
+		height: 49%;
+		position: absolute;
+		top: 58.5%;
+		right: 0.2%;
+		}
+
+
+	/*下中*/
+	.e {
+		width: 33%;
+		height: 49%;
+		position: absolute;
+		top: 58.5%;
+		right: 33.5%;
+		}
+
+
+	/*下左*/
+	.f {
+		width: 33%;
+		height: 49%;
+		position: absolute;
+		top: 58.5%;
+		right: 66.8%;
+		}
+		/* div放大效果*/
+		/*上右*/
+	   .a1:HOVER{
+            cursor: pointer;
+            transition: all 1s;
+			transform: translate(-400px,200px) scale(2);
+			background-color:#83CFD1;
+			z-index:1;
+            }
+
+		/*上中*/
+		.b2:HOVER{
+            cursor: pointer;
+            transition: all 1s;
+			transform: translate(0px,200px) scale(2);
+			background-color:#83CFD1;
+			z-index:1;
+            }
+
+		/*上左*/
+		.c2:HOVER{
+            cursor: pointer;
+            transition: all 1s;
+			transform: translate(400px,200px) scale(2);
+			background-color:#83CFD1;
+			z-index:1;
+            }
+
+		/*下右*/
+		.d2:HOVER{
+            cursor: pointer;
+            transition: all 1s;
+			transform: translate(-400px,-200px) scale(2);
+			background-color:#83CFD1;
+			z-index:1;
+            }
+
+		/*下中*/
+		.e2:HOVER{
+            cursor: pointer;
+            transition: all 1s;
+			transform: translate(0px,-200px) scale(2);
+			background-color:#83CFD1;
+			z-index:1;
+            }
+
+		/*下左*/
+		.f2:HOVER{
+            cursor: pointer;
+            transition: all 1s;
+			transform: translate(400px,-200px) scale(2);
+			background-color:#83CFD1;
+			z-index:1;
+            }
+
+
+    </style>
+    <script>
+            function time(){
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth()+1;
+                var day = date.getDate();
+                var week = date.getDay();
+                week="星期"+"日一二三四五六".charAt(week);
+                /*switch(week){
+                    case 1:
+                        week="星期一";
+                        break;
+                    case 2:
+                        week="星期二";
+                        break;
+                    case 3:
+                        week="星期三";
+                        break;
+                    case 4:
+                        week="星期四";
+                        break;
+                    case 5:
+                        week="星期五";
+                        break;
+                    case 6:
+                        week="星期六";
+                        break;
+                    case 0:
+                        week="星期日";
+                        break;
+                }*/
+                var hour =date.getHours();
+                hour=hour<10?"0"+hour:hour;
+                var minute =date.getMinutes();
+                minute=minute<10?"0"+minute:minute;
+                var second = date.getSeconds();
+                second=second<10?"0"+second:second;
+                var currentTime = year+"-"+month+"-"+day+"  "+week+"   "+hour+":"+minute+":"+second;
+                document.getElementById("time").innerHTML=currentTime;
+            }
+            setInterval("time()",1000);
+        </script>
+
+</head>
+<body class="body">
+     <div class="ziti">ePSM工单系统信息看板
+    <span id="time" class="ziti1"></span>
+    </div>
+     <br/>
+
+      <!-- 情况一：没有父盒子，即父盒子就是浏览器 -->
+    <div id="bar" class="a a1"></div>
+    <div id="bar2" class="b b2"></div>
+    <div id="pie1"  class="c c2"></div>
+    <div id="line1" class="d d2"></div>
+    <div id="line2" class="e e2"></div>
+    <div id="bar3" class="f f2"></div>
+     <br>
+    <!--bar图形，第一个图形-->
+    <script>
+        var char1 = echarts.init(document.getElementById('bar'), 'white1', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchData(char1);
+                setInterval(fetchData, 30000);
+            }
+        );
+
+        function fetchData() {
+            $.ajax({
+                type: "GET",
+                url: "/demo/bar",
+                async:false,
+                dataType: 'json',
+                success: function (result) {
+                    char1.setOption(result.data);
+                }
+            });
+        }
+    </script>
+
+
+
+    <!--bar2图形，第二个图形-->
+    <script>
+        var char2 = echarts.init(document.getElementById('bar2'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchDat(char2);
+                setInterval(fetchDat, 30000);
+            }
+        );
+
+        function fetchDat() {
+            $.ajax({
+                type: "GET",
+                url: "/demo/bar2",
+                async:false,
+                dataType: 'json',
+                success: function (result1) {
+                    char2.setOption(result1.data);
+                }
+            });
+        }
+    </script>
+
+
+    <!--pie饼图，第三个图形-->
+    <script>
+        var char3 = echarts.init(document.getElementById('pie1'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchDat1(char3);
+                setInterval(fetchDat1, 60000);
+            }
+        );
+
+        function fetchDat1() {
+            $.ajax({
+                type: "GET",
+                url: "/demo/pie1",
+                dataType: 'json',
+                success: function (result2) {
+                    char3.setOption(result2.data);
+                }
+            });
+        }
+    </script>
+    <br>
+    <!--line1折线图，第四个图形-->
+    <script>
+        var char4 = echarts.init(document.getElementById('line1'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchDat2(char4);
+                setInterval(fetchDat2, 40000);
+            }
+        );
+
+        function fetchDat2() {
+            $.ajax({
+                type: "GET",
+                url: "/demo/line1",
+                dataType: 'json',
+                success: function (result2) {
+                    char4.setOption(result2.data);
+                }
+            });
+        }
+    </script>
+    <!--line2折线图，第五个图形-->
+    <script>
+        var char5 = echarts.init(document.getElementById('line2'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchDat3(char5);
+                setInterval(fetchDat3, 50000);
+            }
+        );
+
+        function fetchDat3() {
+            $.ajax({
+                type: "GET",
+                url: "/demo/line2",
+                dataType: 'json',
+                success: function (result2) {
+                    char5.setOption(result2.data);
+                }
+            });
+        }
+       </script>
+    <!--bar3折线图，第六个图形-->
+    <script>
+        var char6 = echarts.init(document.getElementById('bar3'), 'white', {renderer: 'canvas'});
+
+        $(
+            function () {
+                fetchDat4(char6);
+                setInterval(fetchDat4, 40000);
+            }
+        );
+
+        function fetchDat4() {
+            $.ajax({
+                type: "GET",
+                url: "/demo/bar3",
+                dataType: 'json',
+                success: function (result2) {
+                    char6.setOption(result2.data);
+                }
+            });
+        }
+       </script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> int 是 {{ int |add:'2'}}</h3><!--使用过滤器 add 作用将视图传进来的变量值加2-->
+<h3> str 是 {{str | upper}}</h3>  <!--使用过滤器upper 进视图传进来的变量全部转化为大写-->
+<h3> lst 是 {{lst}}</h3>
+<h3> lst 是 {{lst.0}}</h3>
+<h3> dict 是 {{dict}}</h3>
+<h3> dict  ['a']是 {{dict.a}}</h3>
+<h3> func 是 {{func}}</h3>
+<h3> class_obj 是 {{class_obj.say}}</h3>
+<h3>script 是 {{script |safe}}</h3>  <!--使用了过滤器 safe 将html转义关闭 是视图传进来的js代码能正常执行-->
+
+
+</body>
+</html>

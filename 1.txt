@@ -1,0 +1,32 @@
+#unit是说明信息说明我们服务的一些概况  
+[Unit]  
+#描述我们的服务  
+Description=Tomcat 9 servlet container  
+#当前服务在网络服务启动之后启动  
+After=network.target   
+
+#描述服务运行时需要执行的一些命令或者是关闭的时候需要执行的一些命令  
+[Service]  
+#定义服务类型  
+Type=forking  
+#用户  
+User=tomcat  
+#用户组  
+Group=tomcat  	  
+#运行环境  
+#java 目录  
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"  
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"  
+#开启tomcat服务命令  
+ExecStart=/home/wangkaixuan/tomcat/bin/startup.sh  
+#关闭服务的命令  
+ExecStop=/home/wangkaixuan/tomcat/bin/shutdown.sh  
+#服务家目录  
+Environment="CATALINA_BASE=/home/wangkaixuan/tomcat"   
+#服务家目录  
+Environment="CATALINA_HOME=/home/wangkaixuan/tomcat  	 
+#服务该如何安装  
+[Install]  
+#服务该跟随哪一个服务启动，这里服务跟随多用户服务启动而启动  
+WantedBy=multi-user.target 
+

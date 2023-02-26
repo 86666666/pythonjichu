@@ -1,0 +1,1 @@
+print('{2} {0}{1}'.format('wangkaiuxan',58,'789'))

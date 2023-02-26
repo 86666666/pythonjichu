@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看所有数据</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+    <td> id </td>
+    <td> title 书名</td>
+    <td> price 定价 </td>
+    <td> info 信息 </td>
+    <td> market_price 零售价 </td>
+    <td> pub 出版社 </td>
+    </tr>
+    {% for book in all_book  %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.info }}</td>
+        <td>{{ book.market_price }}</td>
+        <td>{{ book.pub }}</td>
+        <td>    <!-- 将book 的id 放到url中，然后在路由中用path转换器匹配路由-->
+            <a href="/bookstore/update_book/{{ book.id }}">更新</a>
+            <!-- 将book 的id 放到查询字符串中，然后在路由中用path转换器匹配路由-->
+            <a href="/bookstore/delete_book?book_id={{ book.id}}">删除</a>
+       </td>
+    </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试url</title>
+</head>
+<body>
+<a href="http://127.0.0.1:8001/test/url">当前网页地址</a>
+<a href="http://127.0.0.1:8001/test_url_result">绝对地址</a>
+<a href="/test_url_result">带/的相对地址</a>
+<a href="test_url_result">不带/的相对地址</a>
+
+<a href="{% url 'tr' '100' %}">url 反向解析版本</a>  <!--django 标签实现url反向解析-->
+
+</body>
+</html>
+

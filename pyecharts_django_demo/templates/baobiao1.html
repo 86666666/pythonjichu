@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+     <style>
+            .fl-table {
+                margin: 20px;
+                border-radius: 5px;
+                font-size: 12px;
+                border: none;
+                border-collapse: collapse;
+                max-width: 100%;
+                white-space: nowrap;
+                word-break: keep-all;
+            }
+
+            .fl-table th {
+                text-align: left;
+                font-size: 20px;
+            }
+
+            .fl-table tr {
+                display: table-row;
+                vertical-align: inherit;
+                border-color: inherit;
+            }
+
+            .fl-table tr:hover td {
+                background: #00d1b2;
+                color: #F8F8F8;
+            }
+
+            .fl-table td, .fl-table th {
+                border-style: none;
+                border-top: 1px solid #dbdbdb;
+                border-left: 1px solid #dbdbdb;
+                border-bottom: 3px solid #dbdbdb;
+                border-right: 1px solid #dbdbdb;
+                padding: .5em .55em;
+                font-size: 15px;
+            }
+
+            .fl-table td {
+                border-style: none;
+                font-size: 15px;
+                vertical-align: center;
+                border-bottom: 1px solid #dbdbdb;
+                border-left: 1px solid #dbdbdb;
+                border-right: 1px solid #dbdbdb;
+                height: 30px;
+            }
+
+            .fl-table tr:nth-child(even) {
+                background: #F8F8F8;
+            }
+        </style>
+</head>
+<body>
+        <div id="841e532ac3974c6ea69cab04b48abfd4" class="chart-container" style="">
+            <p class="title" style="font-size: 18px; font-weight:bold;" > Daily_Report_WTCCN</p>
+            <p class="subtitle" style="font-size: 12px;" >对数据有疑问请联系bill.wang</p>
+            <table class="fl-table">
+    <thead>
+        <tr>
+            <th>日期</th>
+            <th>Total_call</th>
+            <th>Unclosed</th>
+            <th>Scheduled</th>
+            <th>P1_call</th>
+            <th>Over_SLA</th>
+            <th>SLA_Met</th>
+            <th>Worst_TAT</th>
+            <th>Avg_onsite_time</th>
+            <th>No_onsite_time</th>
+            <th>Onsite_1</th>
+            <th>Remote_Fixed</th>
+            <th>指标</th>
+            <th>30天指标汇总</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for r7 in r3 %}
+        <tr>
+            <td>{{ r7.0 }}</td>
+            <td>{{ r7.1 }}</td>
+            <td>{{ r7.2 }}</td>
+            <td>{{ r7.3 }}</td>
+            <td>{{ r7.4 }}</td>
+            <td>{{ r7.5 }}</td>
+            <td>{{ r7.6 }}</td>
+            <td>{{ r7.7 }}</td>
+            <td>{{ r7.8 }}</td>
+            <td>{{ r7.9 }}</td>
+            <td>{{ r7.10 }}</td>
+            <td>{{ r7.11 }}</td>
+            <td>{{ r7.12 }}</td>
+            <td>{{ r7.13 }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+        </div>
+
+
+</body>
+</html>
