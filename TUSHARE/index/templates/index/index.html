@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Awesome-pyecharts</title>
+    <title>bill-量化</title>
      <style>
             .fl-table {
                 margin: 1px;/*报表左边距*/
@@ -71,7 +71,15 @@
 <body>
  <!--第一个单元格排序规则不是按照视图中的排序规则，而是按照之前epsm 中的excel中的排序规则 ccti==all-->
  <p class="title" style="font-size: 18px; font-weight:bold;">{{ dt2 }}</p>
-            <table class="fl-table">
+    <button id="btn1">id排序</button>
+    <button id="btn2">day1-price排序</button>
+    <button id="btn3">5天涨幅排序</button>
+    <button id="btn4">10天涨幅排序</button>
+    <button id="btn5">30天涨幅排序</button>
+    <button id="btn6">70天涨幅排序</button>
+    <button id="btn7">100天涨幅排序</button>
+    <button id="btn8">小单买入占比排序</button>
+            <table class="fl-table" id="tab1">
     <thead>
         <tr>
             <th>index</th>
@@ -123,5 +131,156 @@
     {% endfor %}
     </tbody>
 </table>
+<script>
+            /* 按钮1=按id排序 按钮2=按年龄排序 */
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+            var btn3 = document.getElementById("btn3");
+            var tab1 = document.getElementById("tab1");
+            btn1.onclick=function(){
+                /* 定义一个空数组 */
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    /* cells[0]代表第一个单元格即id单元格的内容 */
+                    var n1=parseInt(tr1.cells[0].innerHTML);
+                    var n2=parseInt(tr2.cells[0].innerHTML);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            };
+            btn2.onclick = function() {
+                var arr = [];
+                for (var i = 0; i < tab1.tBodies[0].rows.length; i++) {
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1, tr2) {
+                    var n1 = parseFloat(tr1.cells[3].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[3].innerHTML).toFixed(2);
+                    return n1 - n2;
+                });
+                for (var i = 0; i < arr.length; i++) {
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+            btn3.onclick=function(){
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    var n1 = parseFloat(tr1.cells[14].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[14].innerHTML).toFixed(2);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+            btn4.onclick=function(){
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    var n1 = parseFloat(tr1.cells[15].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[15].innerHTML).toFixed(2);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+            btn5.onclick=function(){
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    var n1 = parseFloat(tr1.cells[16].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[16].innerHTML).toFixed(2);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+            btn6.onclick=function(){
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    var n1 = parseFloat(tr1.cells[17].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[17].innerHTML).toFixed(2);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+            btn7.onclick=function(){
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    var n1 = parseFloat(tr1.cells[18].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[18].innerHTML).toFixed(2);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+            btn8.onclick=function(){
+                var arr=[];
+                for (var i=0;i<tab1.tBodies[0].rows.length;i++ ){
+                    arr.push(tab1.tBodies[0].rows[i]);
+                }
+                arr.sort(function(tr1,tr2){
+                    var n1 = parseFloat(tr1.cells[19].innerHTML).toFixed(2);
+                    var n2 = parseFloat(tr2.cells[19].innerHTML).toFixed(2);
+                    return n1-n2;
+                });
+                for (var i=0;i<arr.length;i++){
+                    tab1.tBodies[0].appendChild(arr[i]);
+                }
+            }
+
+           //按钮点击后增加特效
+            var myButton = document.getElementById("btn2");
+            myButton.addEventListener("click", function() {
+              // 添加一个提示框
+              var alertBox = document.createElement("div");
+              alertBox.innerText = "正在处理，请稍候...";
+              alertBox.style.position = "absolute";
+              alertBox.style.top = "50%";
+              alertBox.style.left = "50%";
+              alertBox.style.transform = "translate(-50%, -50%)";
+              alertBox.style.padding = "10px";
+              alertBox.style.border = "1px solid #ccc";
+              alertBox.style.background = "#fff";
+              alertBox.style.zIndex = 9999;
+              document.body.appendChild(alertBox);
+
+              // 添加一个动画
+              myButton.style.transition = "all 0.3s ease";
+              myButton.style.transform = "rotate(360deg)";
+              myButton.style.opacity = 0.5;
+
+              // 等待2秒钟后清除提示框和动画
+              setTimeout(function() {
+                document.body.removeChild(alertBox);
+                myButton.style.transition = "none";
+                myButton.style.transform = "rotate(0deg)";
+                myButton.style.opacity = 1;
+              }, 2000);
+            });
+    </script>
 </body>
 </html>
